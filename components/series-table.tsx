@@ -13,7 +13,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 import { ChevronRight, Pencil, ArrowUpDown } from "lucide-react";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Link from "next/link";
 import { CollectionSearch } from "./collection-search";
 import CollectionEmpty from "./collection-empty";
@@ -161,7 +161,7 @@ export default function SeriesTable({ initialSeries }: SeriesTableProps) {
 
           <tbody className="divide-y">
             {table.getRowModel().rows.map((row) => (
-              <>
+              <Fragment key={row.id}>
                 <tr
                   key={row.id}
                   className="group transition-colors hover:bg-accent/30"
@@ -215,7 +215,7 @@ export default function SeriesTable({ initialSeries }: SeriesTableProps) {
                     </td>
                   </tr>
                 )}
-              </>
+              </Fragment>
             ))}
           </tbody>
         </table>
